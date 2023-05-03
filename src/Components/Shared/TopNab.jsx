@@ -21,24 +21,24 @@ const TopNav = () => {
             <div className="hidden md:block">
               <ul className="ml-4 flex space-x-4">
                 <li>
-                  <a href="#" className="text-white hover:text-orange-200">
+                  <Link to={"/"} className="text-white hover:text-orange-200">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-white hover:text-orange-200">
-                    About
-                  </a>
+                  <Link to={"/"} className="text-white hover:text-orange-200">
+                    Blog
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-white hover:text-orange-200">
-                    Services
-                  </a>
+                  <Link to={"/"} className="text-white hover:text-orange-200">
+                    User profile picture
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-white hover:text-orange-200">
-                    Contact
-                  </a>
+                  <Link to={"/"} className="text-white hover:text-orange-200">
+                    Login
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -74,24 +74,24 @@ const TopNav = () => {
           <div className="md:hidden">
             <ul className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <li>
-                <a href="#" className="text-white hover:text-orange-200">
+                <Link to={"/"} className="text-white hover:text-orange-200">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white hover:text-orange-200">
-                  About
-                </a>
+                <Link to={"/"} className="text-white hover:text-orange-200">
+                  Blog
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white hover:text-orange-200">
-                  Services
-                </a>
+                <Link to={"/"} className="text-white hover:text-orange-200">
+                  User profile picture
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white hover:text-orange-200">
-                  Contact
-                </a>
+                <Link to={"/"} className="text-white hover:text-orange-200">
+                  Login
+                </Link>
               </li>
             </ul>
           </div>

@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <header className="container mx-auto header flex flex-col md:flex-row justify-between items-center md:max-h-[32rem] max-h-full md:min-h-[32rem] overflow-hidden">
       <div className="w-full md:w-1/2">
-        <h1 className="text-5xl md:text-4xl font-bold leading-tight">
+        <h1 className="text-4xl md:text-4xl font-bold leading-tight">
           Feast from the Experts <br />
           <span className="text-orange-600">
             {" "}
