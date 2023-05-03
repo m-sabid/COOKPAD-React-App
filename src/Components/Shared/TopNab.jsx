@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const TopNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +8,8 @@ const TopNav = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const {user} = useContext(AuthContext);
 
   return (
     <header>
@@ -32,7 +35,7 @@ const TopNav = () => {
                 </li>
                 <li>
                   <Link to={"/"} className="text-white hover:text-orange-200">
-                    User profile picture
+                    {user}
                   </Link>
                 </li>
                 <li>
