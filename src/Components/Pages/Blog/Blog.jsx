@@ -1,4 +1,5 @@
 import React from "react";
+import LazyLoad from "react-lazy-load";
 
 const Blog = ({ blogImage, title, author, time, answer }) => {
   const dateTimeString = time;
@@ -13,12 +14,14 @@ const Blog = ({ blogImage, title, author, time, answer }) => {
               <h2 className="text-white z-10 text-4xl font-bold mb-2">
                 {title}
               </h2>
-            </div>            
-            <img
-              src={blogImage}
-              alt="Profile image"
-              className="w-full object-cover h-full"
-            />
+            </div>
+            <LazyLoad height={762}>
+              <img
+                src={blogImage}
+                alt="Profile image"
+                className="w-full object-cover h-full"
+              />
+            </LazyLoad>
           </div>
           <div className="py-5">
             <h2 className="text-blue-500 text-4xl font-bold mb-2">{title}</h2>

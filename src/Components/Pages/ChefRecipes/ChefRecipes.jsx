@@ -2,16 +2,19 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { FaThumbsUp } from "react-icons/fa";
 import RecipesCard from "./RecipesCard";
-
+import LazyLoad from "react-lazy-load";
 
 const ChefRecipes = () => {
   const allRecipes = useLoaderData();
 
-  const { bio, likes, name, picture, totalRecipes, experience, recipes } = allRecipes;
+  const { bio, likes, name, picture, totalRecipes, experience, recipes } =
+    allRecipes;
   return (
     <div>
       <div className="h-[60vh] flex justify-center">
-        <img src={picture} alt="" className=" h-full rounded-lg object-top" />
+        <LazyLoad height={762}>
+          <img src={picture} alt="" className=" h-full rounded-lg object-top" />
+        </LazyLoad>
       </div>
       <div className="flex gap-3">
         <h1 className="font-bold text-3xl border-b-2 border-orange-500">
@@ -27,16 +30,17 @@ const ChefRecipes = () => {
         <li>Experience: {experience} Years of experience</li>
         <li>Total Recipes: {totalRecipes}</li>
       </ul>
-      <p className="text-justify"><strong>Bio: </strong>{bio}</p>
-      {
-        recipes.map((rp)=>{
-          return(
-            <div key={rp.id}>
-              <RecipesCard rp={rp} />
-            </div>
-          )
-        })
-      }      
+      <p className="text-justify">
+        <strong>Bio: </strong>
+        {bio}
+      </p>
+      {recipes.map((rp) => {
+        return (
+          <div key={rp.id}>
+            <RecipesCard rp={rp} />
+          </div>
+        );
+      })}
     </div>
   );
 };
