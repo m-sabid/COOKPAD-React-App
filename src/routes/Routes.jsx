@@ -3,6 +3,7 @@ import Main from "../layout/Main";
 import BlogPage from "../Pages/BlogPage/BlogPage";
 import ChefRecipesPage from "../Pages/ChefRecipesPage/ChefRecipesPage";
 import LoginPage from "../Pages/LoginPage/LoginPage";
+import NotFoundPage from "../Pages/NotFoundPage";
 import SignupPage from "../Pages/SignupPage/SignupPage";
 import PrivetRoute from "./PrivetRoute";
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/blog",
     element: <BlogPage />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 
