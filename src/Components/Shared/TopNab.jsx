@@ -122,7 +122,7 @@ const TopNav = () => {
                 </Link>
               </li>
               <li>
-                <Link to={"/"} className="text-white hover:text-orange-200">
+                <Link to={"/blog"} className="text-white hover:text-orange-200">
                   Blog
                 </Link>
               </li>
