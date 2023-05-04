@@ -12,7 +12,7 @@ const ChefRecipes = () => {
   return (
     <div>
       <div className="h-[60vh] flex justify-center">
-        <LazyLoad height={762}>
+        <LazyLoad height={350}>
           <img src={picture} alt="" className=" h-full rounded-lg object-top" />
         </LazyLoad>
       </div>

@@ -14,7 +14,7 @@ function RecipeCard({ rp }) {
   return (
     <div className="max-w-full my-5 rounded overflow-hidden shadow-lg">
       <img
-        className="w-full h-96 object-cover rounded-md"
+        className="w-full max-h-96 object-cover rounded-md"
         src={rp.picture}
         alt={rp.name}
       />
