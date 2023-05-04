@@ -3,14 +3,15 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+console.log(import.meta.env.VITE_SOME_KEY);
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCtwI1julCWcAMBEb7ihCTH1FaYFFSU93A",
-  authDomain: "cookpadaauth.firebaseapp.com",
-  projectId: "cookpadaauth",
-  storageBucket: "cookpadaauth.appspot.com",
-  messagingSenderId: "788271716707",
-  appId: "1:788271716707:web:ea1726a4301624233adb56",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
