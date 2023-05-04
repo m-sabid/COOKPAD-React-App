@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { FaThumbsUp } from "react-icons/fa";
 import RecipesCard from "./RecipesCard";
 
+
 const ChefRecipes = () => {
   const allRecipes = useLoaderData();
 

@@ -18,6 +18,7 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
@@ -47,7 +48,7 @@ const LoginPage = () => {
         console.log(loginUser);
         setLoading(false);
         form.reset();
-        navigate('/')
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;

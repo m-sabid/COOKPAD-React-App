@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+import { BsFillBookmarkFill } from "react-icons/bs";
 
 function RecipeCard({ rp }) {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  const handleBookmarkClick = () => {
+    toast("Added to Bookmark")
+    setIsButtonDisabled(true);
+  };
+
   return (
     <div className="max-w-full my-5 rounded overflow-hidden shadow-lg">
-      <img className="w-full h-96 object-cover rounded-md" src={rp.picture} alt={rp.name} />
+      <img
+        className="w-full h-96 object-cover rounded-md"
+        src={rp.picture}
+        alt={rp.name}
+      />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{rp.name}</div>
+        <div className="font-bold text-xl mb-2 flex items-center gap-3">
+          {rp.name}
+          <button onClick={handleBookmarkClick} disabled={isButtonDisabled}>
+            <BsFillBookmarkFill />
+            <ToastContainer />
+          </button>
+        </div>
         <div className="flex items-center mb-2">
           <svg
             className="h-4 w-4 fill-current text-yellow-500 mr-1"
@@ -16,7 +36,7 @@ function RecipeCard({ rp }) {
           <span className="text-gray-700">{rp.rating}</span>
         </div>
         <div className="px-6">
-            <h4 className="text-xl font-bold my-3">Ingredients</h4>
+          <h4 className="text-xl font-bold my-3">Ingredients</h4>
           <ul className="text-gray-700 text-base">
             {rp.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>

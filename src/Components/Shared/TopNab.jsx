@@ -13,6 +13,8 @@ const TopNav = () => {
 
   const { user, logout } = useContext(AuthContext);
 
+  console.log("first_______", user)
+
   const handelLogout = () => {
     logout()
       .then(() => {
@@ -48,7 +50,11 @@ const TopNav = () => {
                     to={"/"}
                     className="text-white text-3xl hover:text-orange-200"
                   >
-                    {user && <FaUserCircle />}
+                    {user && (
+                      <div className="tooltip tooltip-bottom" data-tip={`${user.displayName}`}>
+                        <FaUserCircle />
+                      </div>
+                    )}
                   </Link>
                 </li>
                 <li>

@@ -14,21 +14,25 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   //   Create User
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   //   login
   const loginUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   //   User Signed in or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-      console.log("logged in user");
-      setUser(loggedUser);
+        console.log("logged in user");
+        setUser(loggedUser);
+        setLoading(false)
     });
     return () => {
       unsubscribe();
@@ -37,6 +41,7 @@ const AuthProvider = ({ children }) => {
 
   //   Logout
   const logout = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -45,6 +50,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     loginUser,
     logout,
+    loading,
   };
 
   return (

@@ -42,8 +42,8 @@ const SignupPage = () => {
         <div className="bg-white p-8 rounded shadow-md w-full sm:w-96">
           <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
           {loading ? (
-            <div className="flex items-center justify-center">
-              <Spinner className="mx-auto" />
+            <div class="flex items-center justify-center">
+              <Spinner class="mx-auto" />
             </div>
           ) : (
             ""
