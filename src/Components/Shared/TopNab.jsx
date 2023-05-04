@@ -1,15 +1,25 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
 
 const TopNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const {user} = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+
+  const handelLogout = () => {
+    logout()
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <header>
@@ -34,14 +44,31 @@ const TopNav = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/"} className="text-white hover:text-orange-200">
-                    {user}
+                  <Link
+                    to={"/"}
+                    className="text-white text-3xl hover:text-orange-200"
+                  >
+                    {user && <FaUserCircle />}
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/"} className="text-white hover:text-orange-200">
-                    Login
-                  </Link>
+                  {user ? (
+                    <button onClick={handelLogout}>
+                      <Link
+                        to={"/"}
+                        className="text-orange-500 bg-white p-2 rounded font-bold hover:bg-orange-200 hover:text-black"
+                      >
+                        Logout
+                      </Link>
+                    </button>
+                  ) : (
+                    <Link
+                      to={"/login"}
+                      className="text-orange-500 bg-white p-2 rounded font-bold hover:bg-orange-200 hover:text-black"
+                    >
+                      Login
+                    </Link>
+                  )}
                 </li>
               </ul>
             </div>
