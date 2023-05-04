@@ -115,7 +115,7 @@ const TopNav = () => {
         </div>
         {isOpen && (
           <div className="md:hidden">
-            <ul className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <ul className="px-2 pt-2 pb-10 space-y-1 sm:px-3">
               <li>
                 <Link to={"/"} className="text-white hover:text-orange-200">
                   Home
@@ -128,13 +128,40 @@ const TopNav = () => {
               </li>
               <li>
                 <Link to={"/"} className="text-white hover:text-orange-200">
-                  User profile picture
+                {user && (
+                      <div
+                        className="tooltip tooltip-bottom"
+                        data-tip={`${user.displayName}`}
+                      >
+                        {user.photoURL ? (
+                          <div className="h-10 w-10 rounded-full overflow-hidden">
+                            <img src={user.photoURL} alt="" className="h-full w-full" />
+                          </div>
+                        ) : (
+                          <FaUserCircle />
+                        )}
+                      </div>
+                    )}
                 </Link>
               </li>
               <li>
-                <Link to={"/"} className="text-white hover:text-orange-200">
-                  Login
-                </Link>
+                {user ? (
+                    <button onClick={handelLogout}>
+                      <Link
+                        to={"/"}
+                        className="text-orange-500 bg-white p-2 rounded font-bold hover:bg-orange-200 hover:text-black"
+                      >
+                        Logout
+                      </Link>
+                    </button>
+                  ) : (
+                    <Link
+                      to={"/login"}
+                      className="text-orange-500 bg-white p-2 rounded font-bold hover:bg-orange-200 hover:text-black"
+                    >
+                      Login
+                    </Link>
+                  )}
               </li>
             </ul>
           </div>
