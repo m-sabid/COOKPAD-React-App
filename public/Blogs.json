@@ -1,0 +1,34 @@
+[
+  {
+    "key": "question1",
+    "question": "Differences between uncontrolled and controlled components",
+    "answer": "In React, components can either be controlled or uncontrolled. Controlled components have their state controlled by React, while uncontrolled components have their state managed by the DOM. Uncontrolled components are simpler to use because you don't need to manage their state in your React code. Instead, you can simply access their values directly from the DOM. This makes them a good choice for simple forms or when you need to integrate with legacy code. Controlled components are more powerful because they allow you to manage the component's state in your React code. This means you can easily validate user input, perform custom logic, and pass data between components. However, they require more setup and can be more complex to use.",
+    "author": "John Doe",
+    "time": "2022-10-05T09:30:00Z",
+    "blogImage": "https://www.upbeatcode.com/static/360f15b0fcb051b7333728895ef0e3c2/c40af/image.png"
+  },
+  {
+    "key": "question2",
+    "question": "How to validate React props using PropTypes?",
+    "answer": "PropTypes is a built-in library in React that helps you validate the types of props passed to your components. To use it, you need to import it from the 'prop-types' module and define the types of props you're expecting in your component's 'propTypes' property.",
+    "author": "Jane Smith",
+    "time": "2022-10-06T13:45:00Z",
+    "blogImage": "https://daveceddia.com/images/custom-hooks.png"
+  },
+  {
+    "key": "question3",
+    "question": "Difference between Node.js and Express.js",
+    "answer": "Node.js is a runtime environment that allows you to run JavaScript code outside of the browser. It provides a platform for building server-side applications, handling I/O operations, and performing other tasks that can't be done in the browser. Express.js, on the other hand, is a web framework built on top of Node.js. It provides a set of tools and conventions for building web applications, such as handling HTTP requests and responses, routing, and middleware. In other words, Node.js is the foundation that Express.js is built upon. You could build a web application using only Node.js, but using a framework like Express.js makes it easier and faster to build robust and scalable applications.",
+    "author": "John Doe",
+    "time": "2022-10-07T11:15:00Z",
+    "blogImage": "https://shameem.b-cdn.net/wp-content/uploads/2023/04/exposing-react-component-functions-with-fowardref-and-useref.png"
+  },
+  {
+    "key": "question4",
+    "question": "What is a custom hook, and why will you create a custom hook?",
+    "answer": "In React, a custom hook is a JavaScript function that starts with the prefix 'use' and allows you to encapsulate and reuse logic across multiple components. Custom hooks allow you to extract logic from your components and make it more reusable and testable. You might create a custom hook if you have some logic that needs to be reused across multiple components, or if you want to encapsulate complex or repetitive logic in a more readable and reusable way. For example, you could create a custom hook for handling form validation or for fetching data from an API.",
+    "author": "Jane Smith",
+    "time": "2022-10-08T16:20:00Z",
+    "blogImage": "https://i.morioh.com/210531/aa11e5c9.webp"
+  }
+]

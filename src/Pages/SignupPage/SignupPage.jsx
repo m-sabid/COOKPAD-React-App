@@ -11,28 +11,24 @@ const SignupPage = () => {
   const [loading, setLoading] = useState(false);
 
   // handelSignUp
-  const handelSignUp = (e) => {
-    e.preventDefault();
+  const handelSignUp = async (event) => {
+    event.preventDefault();
     setLoading(true);
-    const form = e.target;
-    const name = form.name.value;
+    const form = event.target;
+    const displayName = form.displayName.value;
     const email = form.email.value;
     const password = form.password.value;
-    const photo = form.pURL.value;
-    // console.log(name, email, password, photo);
+    const photoUrl = form.photoUrl.value;
+    // console.log(displayName, email, password, photoUrl);
 
-    createUser(email, password)
-      .then((result) => {
-        const createdUser = result.user;
-        // console.log(createdUser);
-        form.reset();
-        setLoading(false);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
-      });
+    try {
+      await createUser(email, password, displayName, photoUrl);
+      form.reset();
+      setLoading(false);
+      // Account created successfully
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -52,15 +48,15 @@ const SignupPage = () => {
             <div className="mb-4">
               <label
                 className="block text-gray-700 font-semibold mb-2"
-                htmlFor="name"
+                htmlFor="displayName"
               >
                 Name
               </label>
               <input
                 className="w-full p-3 rounded border border-gray-400 focus:border-blue-500"
                 type="text"
-                name="name"
-                id="name"
+                name="displayName"
+                id="displayName"
                 placeholder="Enter your name"
               />
             </div>
@@ -107,7 +103,7 @@ const SignupPage = () => {
             <div className="mb-4">
               <label
                 className="block text-gray-700 font-semibold mb-2"
-                htmlFor="confirm-password"
+                htmlFor="photoUrl"
               >
                 Photo URL
               </label>
@@ -118,8 +114,8 @@ const SignupPage = () => {
                 <input
                   className="w-full p-3 pl-12 rounded border border-gray-400 focus:border-blue-500"
                   type="text"
-                  name="pURL"
-                  id="pURL"
+                  name="photoUrl"
+                  id="photoUrl"
                   placeholder="Add photo url"
                 />
               </div>

@@ -1,6 +1,5 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import app from "../../firebase/firebase.config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -8,10 +7,10 @@ import {
   faGoogle,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import TopNav from "../../Components/Shared/TopNab";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Spinner from "../../Components/Shared/Spinner";
+import TopNav from "../../Components/Shared/TopNab";
 
 const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
@@ -20,8 +19,9 @@ const LoginPage = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const auth = getAuth(app);
+  const auth = getAuth();
   const provider = new GoogleAuthProvider();
+  const gitProvider = new GithubAuthProvider();
 
   const signInWithGoogle = async () => {
     try {
@@ -32,15 +32,23 @@ const LoginPage = () => {
       console.log(error);
     }
   };
+  // Github
+  const signInWithGithub = async () => {
+    try {
+      const result = await signInWithPopup(auth, gitProvider);
+      const user = result.user;
+      console.log(user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // Login with email password
-  const handelForm = (e) => {
+  const handleForm = (e) => {
     e.preventDefault();
     setLoading(true);
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(name, email, password, photo);
 
     loginUser(email, password)
       .then((result) => {
@@ -71,7 +79,7 @@ const LoginPage = () => {
             ""
           )}
           {/* Form */}
-          <form onSubmit={handelForm}>
+          <form onSubmit={handleForm}>
             <div className="mb-4">
               <label
                 className="block text-gray-700 font-semibold mb-2"
@@ -137,11 +145,10 @@ const LoginPage = () => {
               <FontAwesomeIcon icon={faGoogle} className="mr-2" />
               Sign in with Google
             </button>
-            <button className="flex items-center justify-center w-full py-3 rounded-md text-white bg-blue-700 hover:bg-blue-800">
-              <FontAwesomeIcon icon={faFacebookF} className="mr-2" />
-              Sign in with Facebook
-            </button>
-            <button className="flex items-center justify-center w-full py-3 rounded-md text-white bg-gray-700 hover:bg-gray-800">
+            <button
+              onClick={signInWithGithub}
+              className="flex items-center justify-center w-full py-3 rounded-md text-white bg-gray-700 hover:bg-gray-800"
+            >
               <FontAwesomeIcon icon={faGithub} className="mr-2" />
               Sign in with GitHub
             </button>

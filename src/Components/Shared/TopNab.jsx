@@ -13,8 +13,6 @@ const TopNav = () => {
 
   const { user, logout } = useContext(AuthContext);
 
-  console.log("first_______", user)
-
   const handelLogout = () => {
     logout()
       .then(() => {
@@ -34,14 +32,14 @@ const TopNav = () => {
               </Link>
             </div>
             <div className="hidden md:block">
-              <ul className="ml-4 flex space-x-4">
+              <ul className="ml-4 flex items-center space-x-4">
                 <li>
                   <Link to={"/"} className="text-white hover:text-orange-200">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/"} className="text-white hover:text-orange-200">
+                  <Link to={"/blog"} className="text-white hover:text-orange-200">
                     Blog
                   </Link>
                 </li>
@@ -51,8 +49,17 @@ const TopNav = () => {
                     className="text-white text-3xl hover:text-orange-200"
                   >
                     {user && (
-                      <div className="tooltip tooltip-bottom" data-tip={`${user.displayName}`}>
-                        <FaUserCircle />
+                      <div
+                        className="tooltip tooltip-bottom"
+                        data-tip={`${user.displayName}`}
+                      >
+                        {user.photoURL ? (
+                          <div className="h-10 w-10 rounded-full overflow-hidden">
+                            <img src={user.photoURL} alt="" className="h-full w-full" />
+                          </div>
+                        ) : (
+                          <FaUserCircle />
+                        )}
                       </div>
                     )}
                   </Link>
