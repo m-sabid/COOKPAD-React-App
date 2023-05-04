@@ -19,7 +19,6 @@ const SignupPage = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photoUrl = form.photoUrl.value;
-    // console.log(displayName, email, password, photoUrl);
 
     try {
       await createUser(email, password, displayName, photoUrl);

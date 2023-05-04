@@ -27,7 +27,6 @@ const LoginPage = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log(user);
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +36,6 @@ const LoginPage = () => {
     try {
       const result = await signInWithPopup(auth, gitProvider);
       const user = result.user;
-      console.log(user);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +51,6 @@ const LoginPage = () => {
     loginUser(email, password)
       .then((result) => {
         const loginUser = result.user;
-        console.log(loginUser);
         setLoading(false);
         form.reset();
         navigate(from, { replace: true });

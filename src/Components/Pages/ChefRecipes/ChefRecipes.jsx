@@ -8,8 +8,6 @@ const ChefRecipes = () => {
   const allRecipes = useLoaderData();
 
   const { bio, likes, name, picture, totalRecipes, experience, recipes } = allRecipes;
-
-  console.log(allRecipes);
   return (
     <div>
       <div className="h-[60vh] flex justify-center">

@@ -4,8 +4,6 @@ const Recipe = ({ name, ingredients, image }) => {
   const [profileImg, setProfileImg] = useState([]);
   const [randomIndex, setRandomIndex] = useState(0);
 
-  console.log(profileImg);
-
   const url =
     "https://api.unsplash.com/search/photos?page=1&query=juice&client_id=MbE1XMj7pdRElJnfBN5e6QwLAPi9WegETpvvo5W92_Y";
 
